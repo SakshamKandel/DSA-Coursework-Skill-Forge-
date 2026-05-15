@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css?v=2.3" />
 </head>
 <body>
 <div class="error-page">

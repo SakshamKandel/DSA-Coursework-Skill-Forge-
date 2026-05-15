@@ -14,20 +14,20 @@
 %>
 
 <!-- Page content -->
-<div class="p-10 space-y-8">
+<div class="p-2 sm:p-4 lg:p-10 space-y-6 lg:space-y-8">
 
     <!-- Page header -->
-    <div class="flex items-center justify-between mb-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-2 sm:mb-4">
         <div>
-            <h2 class="text-3xl font-black text-slate-800 tracking-tight">Contact Messages</h2>
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-800 tracking-tight">Contact Messages</h2>
             <p class="text-[0.7rem] font-black text-slate-400 uppercase tracking-widest mt-2">Inquiries submitted through the Contact page</p>
         </div>
-        <div class="flex gap-4">
-            <div class="px-6 py-4 rounded-2xl bg-white shadow-sm ring-1 ring-slate-100 flex items-center gap-3">
+        <div class="flex flex-wrap gap-3 sm:gap-4">
+            <div class="px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white shadow-sm ring-1 ring-slate-100 flex items-center gap-3">
                 <span class="text-[0.7rem] font-black text-slate-400 uppercase tracking-widest border-r border-slate-100 pr-3">Pending</span>
                 <span class="text-sm font-black text-slate-800"><%= pending %></span>
             </div>
-            <div class="px-6 py-4 rounded-2xl bg-white shadow-sm ring-1 ring-slate-100 flex items-center gap-3">
+            <div class="px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white shadow-sm ring-1 ring-slate-100 flex items-center gap-3">
                 <span class="text-[0.7rem] font-black text-slate-400 uppercase tracking-widest border-r border-slate-100 pr-3">Total</span>
                 <span class="text-sm font-black text-slate-800"><%= messages != null ? messages.size() : 0 %></span>
             </div>
@@ -35,9 +35,9 @@
     </div>
 
     <% if (messages == null || messages.isEmpty()) { %>
-        <div class="bg-white rounded-[2.5rem] p-20 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-100">
-            <div class="w-24 h-24 bg-slate-50 rounded-[2.5rem] flex items-center justify-center mx-auto mb-6 text-slate-200">
-                <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <div class="bg-white rounded-3xl lg:rounded-[2.5rem] p-10 sm:p-14 lg:p-20 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-100">
+            <div class="w-20 h-20 lg:w-24 lg:h-24 bg-slate-50 rounded-3xl lg:rounded-[2.5rem] flex items-center justify-center mx-auto mb-6 text-slate-200">
+                <svg class="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                     <polyline points="22,6 12,13 2,6"/>
                 </svg>
@@ -46,9 +46,9 @@
             <p class="text-sm font-bold text-slate-300 mt-2">Inquiries sent through the Contact page will appear here.</p>
         </div>
     <% } else { %>
-        <div class="space-y-5">
+        <div class="space-y-4 sm:space-y-5">
             <% for (ContactMessage m : messages) { %>
-                <div class="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-100 <%= m.isHandled() ? "opacity-70" : "" %>">
+                <div class="bg-white rounded-3xl lg:rounded-[2rem] p-5 sm:p-6 lg:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-100 <%= m.isHandled() ? "opacity-70" : "" %>">
 
                     <!-- Top row: sender info plus status badge -->
                     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">

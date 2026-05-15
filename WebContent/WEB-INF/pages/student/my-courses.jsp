@@ -14,37 +14,40 @@
 %>
 
 <!-- Page content -->
-<div class="p-10 space-y-12">
+<div class="p-2 sm:p-4 lg:p-10 space-y-8 lg:space-y-12">
     <!-- Enrolled courses section -->
     <section>
-        <div class="flex items-center gap-6 mb-8">
-            <img src="<%= ctx %>/images/Book reading.png" alt="Mascot" class="w-24 h-24 object-contain" />
-            <div>
-                <h2 class="text-3xl font-black text-slate-800 tracking-tight">My Courses</h2>
-                <p class="text-[0.7rem] font-black text-slate-400 uppercase tracking-widest mt-2">Continue where you left off</p>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-6 lg:mb-8">
+            <div class="flex items-center gap-4 sm:gap-6 flex-1 min-w-0">
+                <img src="<%= ctx %>/images/Book reading.png" alt="Mascot" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain shrink-0" />
+                <div class="min-w-0">
+                    <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-800 tracking-tight">My Courses</h2>
+                    <p class="text-[0.7rem] font-black text-slate-400 uppercase tracking-widest mt-2">Continue where you left off</p>
+                </div>
             </div>
-            <div class="ml-auto">
-                <span class="px-5 py-2 rounded-2xl bg-brand/10 text-brand text-xs font-black uppercase tracking-widest">
+            <div class="self-start sm:self-auto sm:ml-auto">
+                <span class="px-4 sm:px-5 py-2 rounded-2xl bg-brand/10 text-brand text-xs font-black uppercase tracking-widest whitespace-nowrap">
                     <%= (myEnrollments != null) ? myEnrollments.size() : 0 %> enrolled
                 </span>
             </div>
         </div>
 
         <% if (myEnrollments != null && !myEnrollments.isEmpty()) { %>
-        <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-100">
-            <table class="w-full text-left border-collapse">
+        <div class="bg-white rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-100">
+            <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[820px]">
                 <thead>
                     <tr class="bg-slate-50/50">
-                        <th class="px-10 py-6 text-[0.7rem] font-black text-slate-400 uppercase tracking-widest">Course</th>
-                        <th class="px-10 py-6 text-[0.7rem] font-black text-slate-400 uppercase tracking-widest">Progress</th>
-                        <th class="px-10 py-6 text-[0.7rem] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
+                        <th class="px-5 sm:px-8 lg:px-10 py-4 lg:py-6 text-[0.7rem] font-black text-slate-400 uppercase tracking-widest">Course</th>
+                        <th class="px-5 sm:px-8 lg:px-10 py-4 lg:py-6 text-[0.7rem] font-black text-slate-400 uppercase tracking-widest">Progress</th>
+                        <th class="px-5 sm:px-8 lg:px-10 py-4 lg:py-6 text-[0.7rem] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
                     <% for (Enrollment en : myEnrollments) { %>
                     <tr class="group hover:bg-slate-50/30 transition-colors">
-                        <td class="px-10 py-8">
-                            <div class="font-black text-slate-800 text-lg leading-tight">
+                        <td class="px-5 sm:px-8 lg:px-10 py-5 lg:py-8">
+                            <div class="font-black text-slate-800 text-base lg:text-lg leading-tight">
                                 <%= en.getCourseTitle() %>
                                 <% if (!en.isCourseActive()) { %>
                                     <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-[0.65rem] font-bold bg-red-100 text-red-800 uppercase tracking-wider align-middle">Inactive</span>
@@ -52,16 +55,16 @@
                             </div>
                             <div class="text-slate-400 text-xs font-bold mt-1 uppercase tracking-wide">By <%= en.getInstructor() %></div>
                         </td>
-                        <td class="px-10 py-8 w-[400px]">
-                            <div class="flex items-center gap-5">
+                        <td class="px-5 sm:px-8 lg:px-10 py-5 lg:py-8 w-[280px] lg:w-[400px]">
+                            <div class="flex items-center gap-3 sm:gap-5">
                                 <div class="flex-1 h-3.5 bg-slate-100 rounded-full overflow-hidden p-[2px]">
-                                    <div class="h-full rounded-full transition-all duration-1000 ease-out <%= en.getProgress() >= 100 ? "bg-amber-400" : "bg-brand" %> shadow-sm" 
+                                    <div class="h-full rounded-full transition-all duration-1000 ease-out <%= en.getProgress() >= 100 ? "bg-amber-400" : "bg-brand" %> shadow-sm"
                                          style="width:<%= en.getProgress() %>%"></div>
                                 </div>
                                 <span class="text-sm font-black text-slate-500 tabular-nums"><%= en.getProgress() %>%</span>
                             </div>
                         </td>
-                        <td class="px-10 py-8 text-right">
+                        <td class="px-5 sm:px-8 lg:px-10 py-5 lg:py-8 text-right">
                             <div class="flex items-center justify-end gap-4">
                                 <%
                                    Quiz q = (quizByCourse != null) ? quizByCourse.get(en.getCourseId()) : null;
@@ -105,15 +108,16 @@
                     <% } %>
                 </tbody>
             </table>
+            </div>
         </div>
         <% } else { %>
-        <div class="bg-white rounded-[3rem] p-20 text-center border-2 border-dashed border-slate-100">
-            <div class="relative w-56 h-56 mx-auto mb-10">
+        <div class="bg-white rounded-3xl lg:rounded-[3rem] p-8 sm:p-12 lg:p-20 text-center border-2 border-dashed border-slate-100">
+            <div class="relative w-32 h-32 sm:w-44 sm:h-44 lg:w-56 lg:h-56 mx-auto mb-6 lg:mb-10">
                 <img class="w-full h-full object-contain" src="<%= ctx %>/images/Learning.png" alt="Mascot" />
             </div>
-            <h3 class="text-3xl font-black text-slate-800 mb-4">No courses yet</h3>
-            <p class="text-slate-400 font-bold mb-10 max-w-sm mx-auto text-base leading-relaxed">You have not enrolled in any course yet. Browse the catalog below to get started.</p>
-            <a href="#browse" class="inline-flex items-center gap-4 bg-brand text-white px-10 py-5 rounded-[2rem] font-black text-sm uppercase tracking-widest shadow-[0_6px_0_0_rgb(66,153,2)] hover:translate-y-[-2px] active:translate-y-[2px] active:shadow-none transition-all">
+            <h3 class="text-2xl lg:text-3xl font-black text-slate-800 mb-3 lg:mb-4">No courses yet</h3>
+            <p class="text-slate-400 font-bold mb-6 lg:mb-10 max-w-sm mx-auto text-sm lg:text-base leading-relaxed">You have not enrolled in any course yet. Browse the catalog below to get started.</p>
+            <a href="#browse" class="inline-flex items-center gap-3 lg:gap-4 bg-brand text-white px-6 sm:px-8 lg:px-10 py-4 lg:py-5 rounded-2xl lg:rounded-[2rem] font-black text-sm uppercase tracking-widest shadow-[0_6px_0_0_rgb(66,153,2)] hover:translate-y-[-2px] active:translate-y-[2px] active:shadow-none transition-all">
                 Browse Courses
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
             </a>
@@ -122,18 +126,20 @@
     </section>
 
     <!-- Available courses section -->
-    <section id="browse" class="pt-10 scroll-mt-24">
-        <div class="flex items-center gap-6 mb-10">
-            <img src="<%= ctx %>/images/Learning.png" alt="Mascot" class="w-24 h-24 object-contain" />
-            <div>
-                <h2 class="text-3xl font-black text-slate-800 tracking-tight">Available Courses</h2>
-                <p class="text-[0.7rem] font-black text-slate-400 uppercase tracking-widest mt-2">Browse and enroll in a new course</p>
+    <section id="browse" class="pt-6 lg:pt-10 scroll-mt-24">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-6 lg:mb-10">
+            <div class="flex items-center gap-4 sm:gap-6 flex-1 min-w-0">
+                <img src="<%= ctx %>/images/Learning.png" alt="Mascot" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain shrink-0" />
+                <div class="min-w-0">
+                    <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-800 tracking-tight">Available Courses</h2>
+                    <p class="text-[0.7rem] font-black text-slate-400 uppercase tracking-widest mt-2">Browse and enroll in a new course</p>
+                </div>
             </div>
-            <div class="ml-auto">
+            <div class="sm:ml-auto w-full sm:w-auto">
                 <form action="<%= ctx %>/student/courses" method="get" class="relative group">
                     <input type="text" name="search" placeholder="Search courses..." value="<%= searchVal %>"
-                           class="w-80 bg-white border border-slate-100 rounded-3xl px-8 py-5 pl-14 text-[0.95rem] font-black text-slate-700 shadow-sm focus:ring-8 focus:ring-brand/5 focus:border-brand transition-all outline-none" />
-                    <svg class="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-slate-300 group-focus-within:text-brand transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                           class="w-full sm:w-72 lg:w-80 bg-white border border-slate-100 rounded-2xl lg:rounded-3xl px-6 sm:px-8 py-4 sm:py-5 pl-12 sm:pl-14 text-sm lg:text-[0.95rem] font-black text-slate-700 shadow-sm focus:ring-8 focus:ring-brand/5 focus:border-brand transition-all outline-none" />
+                    <svg class="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 w-5 h-5 sm:w-6 sm:h-6 text-slate-300 group-focus-within:text-brand transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
                     </svg>
                 </form>
@@ -150,36 +156,36 @@
         <% } %>
 
         <% if (availableCourses != null && !availableCourses.isEmpty()) { %>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6 lg:gap-10">
             <% for (Course co : availableCourses) { %>
-            <div class="group bg-white rounded-[3rem] border border-slate-100 p-4 shadow-sm hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] hover:translate-y-[-10px] transition-all duration-700">
-                <div class="aspect-video rounded-[2.25rem] mb-8 overflow-hidden bg-slate-50 relative">
+            <div class="group bg-white rounded-3xl lg:rounded-[3rem] border border-slate-100 p-3 sm:p-4 shadow-sm hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] hover:translate-y-[-10px] transition-all duration-700">
+                <div class="aspect-video rounded-2xl lg:rounded-[2.25rem] mb-5 lg:mb-8 overflow-hidden bg-slate-50 relative">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" 
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
                          class="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out" alt="Course" />
-                    <div class="absolute top-6 left-6 z-20">
-                        <span class="px-5 py-2.5 rounded-2xl bg-white/95 backdrop-blur-md text-[0.7rem] font-black uppercase tracking-widest text-slate-800 shadow-sm border border-slate-100">
+                    <div class="absolute top-4 sm:top-6 left-4 sm:left-6 z-20">
+                        <span class="px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md text-[0.65rem] sm:text-[0.7rem] font-black uppercase tracking-widest text-slate-800 shadow-sm border border-slate-100">
                             <%= co.getCategoryName() %>
                         </span>
                     </div>
                 </div>
-                
-                <div class="px-6 pb-6">
-                    <h3 class="text-2xl font-black text-slate-800 mb-3 leading-tight group-hover:text-brand transition-colors"><%= co.getTitle() %></h3>
-                    <div class="flex items-center gap-2 mb-8">
-                        <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center">
+
+                <div class="px-3 sm:px-4 lg:px-6 pb-4 sm:pb-6">
+                    <h3 class="text-xl lg:text-2xl font-black text-slate-800 mb-3 leading-tight group-hover:text-brand transition-colors"><%= co.getTitle() %></h3>
+                    <div class="flex items-center gap-2 mb-5 lg:mb-8">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
                             <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                         </div>
-                        <span class="text-sm font-bold text-slate-400">By <span class="text-slate-900 group-hover:text-brand transition-colors"><%= co.getInstructorName() %></span></span>
+                        <span class="text-xs sm:text-sm font-bold text-slate-400">By <span class="text-slate-900 group-hover:text-brand transition-colors"><%= co.getInstructorName() %></span></span>
                     </div>
-                    
-                    <div class="flex items-center justify-between pt-6 border-t border-slate-50">
+
+                    <div class="flex items-center justify-between gap-3 pt-4 lg:pt-6 border-t border-slate-50">
                         <div class="flex items-center gap-3">
                             <span class="text-[0.7rem] font-black text-slate-400 uppercase tracking-widest"><%= co.getDurationWeeks() %> Weeks</span>
                         </div>
-                        
+
                         <a href="<%= ctx %>/student/courses?action=enroll&courseId=<%= co.getId() %>"
-                           class="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-sm shadow-xl shadow-slate-900/10 hover:bg-brand hover:shadow-brand/20 transition-all">
+                           class="inline-flex items-center gap-2 sm:gap-3 bg-slate-900 text-white px-5 sm:px-6 lg:px-8 py-3 lg:py-4 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm shadow-xl shadow-slate-900/10 hover:bg-brand hover:shadow-brand/20 transition-all whitespace-nowrap">
                             Enroll
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -189,13 +195,13 @@
             <% } %>
         </div>
         <% } else { %>
-        <div class="bg-white rounded-[3rem] p-24 text-center border-2 border-dashed border-slate-100">
-            <div class="w-24 h-24 bg-slate-50 rounded-[2rem] flex items-center justify-center mx-auto mb-8 text-slate-300">
-                <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <div class="bg-white rounded-3xl lg:rounded-[3rem] p-10 sm:p-16 lg:p-24 text-center border-2 border-dashed border-slate-100">
+            <div class="w-20 h-20 lg:w-24 lg:h-24 bg-slate-50 rounded-3xl lg:rounded-[2rem] flex items-center justify-center mx-auto mb-6 lg:mb-8 text-slate-300">
+                <svg class="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </div>
-            <h3 class="text-2xl font-black text-slate-800 mb-3">No results found</h3>
-            <p class="text-slate-400 font-bold mb-8">No courses match your search keyword.</p>
-            <a href="<%= ctx %>/student/courses" class="text-brand font-black text-sm uppercase tracking-widest underline underline-offset-[12px] decoration-4 decoration-current">View All Courses</a>
+            <h3 class="text-xl lg:text-2xl font-black text-slate-800 mb-3">No results found</h3>
+            <p class="text-slate-400 font-bold mb-6 lg:mb-8 text-sm lg:text-base">No courses match your search keyword.</p>
+            <a href="<%= ctx %>/student/courses" class="text-brand font-black text-xs sm:text-sm uppercase tracking-widest underline underline-offset-[12px] decoration-4 decoration-current">View All Courses</a>
         </div>
         <% } %>
     </section>

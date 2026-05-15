@@ -7,20 +7,20 @@
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
 
 <% if (quiz == null || questions == null || questions.isEmpty()) { %>
-<div class="p-10">
-    <div class="bg-white rounded-[3rem] p-20 text-center border-2 border-dashed border-slate-100">
-        <div class="w-24 h-24 bg-slate-50 rounded-[2rem] flex items-center justify-center mx-auto mb-8 text-slate-300">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126z"/><path d="M12 15.75h.007v.008H12v-.008z"/></svg>
+<div class="p-2 sm:p-4 lg:p-10">
+    <div class="bg-white rounded-3xl lg:rounded-[3rem] p-8 sm:p-12 lg:p-20 text-center border-2 border-dashed border-slate-100">
+        <div class="w-20 h-20 lg:w-24 lg:h-24 bg-slate-50 rounded-3xl lg:rounded-[2rem] flex items-center justify-center mx-auto mb-6 lg:mb-8 text-slate-300">
+            <svg class="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126z"/><path d="M12 15.75h.007v.008H12v-.008z"/></svg>
         </div>
-        <h3 class="text-2xl font-black text-slate-800 mb-3">No Quiz Available</h3>
-        <p class="text-slate-400 font-bold mb-8">This course doesn't have a quiz yet, or no questions have been added.</p>
-        <a href="<%= ctx %>/student/courses" class="inline-flex items-center gap-3 bg-brand text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-[0_6px_0_0_rgb(66,153,2)] hover:translate-y-[-2px] active:translate-y-[2px] active:shadow-none transition-all">
+        <h3 class="text-xl lg:text-2xl font-black text-slate-800 mb-3">No Quiz Available</h3>
+        <p class="text-slate-400 font-bold mb-6 lg:mb-8 text-sm lg:text-base">This course doesn't have a quiz yet, or no questions have been added.</p>
+        <a href="<%= ctx %>/student/courses" class="inline-flex items-center gap-3 bg-brand text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-[0_6px_0_0_rgb(66,153,2)] hover:translate-y-[-2px] active:translate-y-[2px] active:shadow-none transition-all">
             Back to Courses
         </a>
     </div>
 </div>
 <% } else { %>
-<div class="quiz-container">
+<div class="quiz-container p-2 sm:p-4 lg:p-10">
     <!-- Welcome banner -->
     <div class="mascot-bubble-container mt-8">
         <div class="mascot-image-wrap">
@@ -91,11 +91,11 @@
 
             <!-- Footer buttons -->
             <div class="quiz-footer">
-                <button type="button" onclick="nextQuestion()" class="btn-duo btn-duo-green px-12 py-5 text-lg">
+                <button type="button" onclick="nextQuestion()" class="btn-duo btn-duo-green px-6 sm:px-10 lg:px-12 py-3 sm:py-4 lg:py-5 text-sm sm:text-base lg:text-lg">
                     <span>Next Question</span>
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
                 </button>
-                <button type="submit" id="submitBtn" class="btn-duo btn-duo-green px-12 py-5 text-lg hidden">
+                <button type="submit" id="submitBtn" class="btn-duo btn-duo-green px-6 sm:px-10 lg:px-12 py-3 sm:py-4 lg:py-5 text-sm sm:text-base lg:text-lg hidden">
                     <span>Submit</span>
                 </button>
             </div>

@@ -16,6 +16,7 @@
     Map<Integer, String> instructors = (Map<Integer, String>) request.getAttribute("instructors");
 %>
 
+<div class="p-2 sm:p-4 lg:p-10">
 <div class="panel form-panel">
     <div class="panel-head">
         <h2><%= isEdit ? "Edit Course" : "Add New Course" %></h2>
@@ -88,6 +89,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>

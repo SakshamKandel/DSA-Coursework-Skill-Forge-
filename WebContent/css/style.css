@@ -122,28 +122,15 @@ img {
     margin-top: 4px;
 }
 
-/* Layout (sidebar and main area) */
+/* Layout (sidebar and main area) — width/positioning now handled by Tailwind on header.jsp */
 .layout {
     display: flex;
     min-height: 100vh;
 }
 
-/* Sidebar — layout shell only (visuals now in Tailwind on header.jsp) */
-.sidebar {
-    width: 260px;
-}
-/* Prevent Tailwind underline reset conflicts */
+/* Prevent Tailwind underline reset conflicts inside the sidebar drawer */
 .sidebar a { text-decoration: none !important; }
 .sidebar a:hover { text-decoration: none !important; }
-
-/* Main area */
-.main {
-    flex: 1;
-    margin-left: 260px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
 
 
 .profile-preview-photo {
@@ -571,30 +558,15 @@ tbody tr:last-child td { border-bottom: none; }
     margin-bottom: 24px;
 }
 
-/* Responsive breakpoints */
+/* Responsive breakpoints — sidebar handled by Tailwind drawer on header.jsp */
+@media (max-width: 1024px) {
+    /* Lock background scroll while drawer is open is handled in JS */
+}
+
 @media (max-width: 768px) {
-    .layout { flex-direction: column; }
-
-    .sidebar {
-        position: relative;
-        width: 100%;
-        flex-direction: column;
-    }
-    .sidebar nav { display: flex; flex-wrap: wrap; padding: 8px; }
-    .sidebar nav a {
-        padding: 8px 14px;
-        border-left: none;
-        border-bottom: 2px solid transparent;
-        font-size: .82rem;
-    }
-    .sidebar nav a.active { border-left: none; border-bottom-color: var(--sidebar-active); }
-
-    .main { margin-left: 0; }
-    .topbar { padding: 14px 18px; }
-    .content { padding: 18px; }
-
     .field-row { grid-template-columns: 1fr; }
     .profile-grid { grid-template-columns: 1fr; }
+    .search-row { flex-wrap: wrap; }
     .search-row input { width: 100%; }
     .cards { grid-template-columns: 1fr; }
     .course-grid { flex-direction: column; }
@@ -602,6 +574,63 @@ tbody tr:last-child td { border-bottom: none; }
 
     table { font-size: .8rem; }
     thead th, tbody td { padding: 8px 10px; }
+
+    /* Form panel inside legacy course-form.jsp */
+    .panel-head { padding: 14px 16px; }
+    .panel-body { padding: 16px; }
+    .form-btns { flex-wrap: wrap; }
+    .form-btns .btn { flex: 1 1 auto; }
+
+    /* Quiz container */
+    .quiz-container { padding: 0; }
+    .quiz-header { gap: 12px; margin-bottom: 24px; }
+    .question-card { padding: 20px; border-radius: 16px; }
+    .question-text { font-size: 1.15rem; margin-bottom: 18px; }
+    .option-item { padding: 12px 14px; font-size: 1rem; gap: 10px; }
+    .option-letter { width: 28px; height: 28px; font-size: 0.8rem; }
+
+    /* Mascot bubble */
+    .mascot-bubble-container { gap: 14px; flex-wrap: wrap; }
+    .mascot-image-wrap { width: 80px; height: 80px; }
+    .speech-bubble { padding: 0.875rem 1.125rem; }
+    .speech-bubble p { font-size: 0.95rem; }
+
+    /* Certificate */
+    .cert-card { padding: 28px; border-width: 6px; }
+    .cert-gold-seal { width: 70px; height: 70px; margin-bottom: 18px; }
+
+    /* Modal dialog */
+    .coc-modal-content { padding: 2rem 1.25rem 1.25rem; border-radius: 1.75rem; border-width: 6px; }
+    .coc-title { font-size: 1.2rem; }
+    .coc-text { font-size: 0.85rem; }
+    .coc-btns { grid-template-columns: 1fr; gap: 0.75rem; }
+    .btn-coc { padding: 0.875rem; font-size: 0.78rem; }
+    .coc-close { width: 36px; height: 36px; top: -10px; right: -10px; border-width: 3px; }
+}
+
+@media (max-width: 480px) {
+    html { font-size: 14px; }
+
+    .auth-box { padding: 28px 22px; }
+    .logo h1 { font-size: 1.5rem; }
+
+    .error-box .code { font-size: 4.5rem; }
+    .error-box h2 { font-size: 1.25rem; }
+
+    .question-card { padding: 16px; border-radius: 14px; }
+    .question-text { font-size: 1.05rem; }
+    .quiz-progress-outer { height: 12px; }
+
+    .speech-bubble { padding: 0.75rem 1rem; }
+    .speech-bubble p { font-size: 0.875rem; line-height: 1.35; }
+    .mascot-image-wrap { width: 64px; height: 64px; }
+}
+
+@media (max-width: 360px) {
+    .auth-box { padding: 22px 18px; }
+    .logo h1 { font-size: 1.35rem; }
+    .error-box .code { font-size: 3.75rem; }
+    .mascot-image-wrap { width: 56px; height: 56px; }
 }
 
 /* Quiz page styles */

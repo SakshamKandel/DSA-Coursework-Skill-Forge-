@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - SkillForge</title>
-    <link rel="stylesheet" href="<%= ctx %>/css/auth.css">
+    <link rel="stylesheet" href="<%= ctx %>/css/auth.css?v=2">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -62,7 +62,6 @@
              data-text="signin_with"
              data-shape="rectangular"
              data-logo_alignment="left"
-             data-width="320"
              style="display: flex; justify-content: center;"></div>
 
         <div class="auth-divider">

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password - SkillForge</title>
-    <link rel="stylesheet" href="<%= ctx %>/css/auth.css">
+    <link rel="stylesheet" href="<%= ctx %>/css/auth.css?v=2">
 </head>
 <body>
 
