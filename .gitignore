@@ -10,7 +10,7 @@
 *.ear
 
 # Allow the MySQL JDBC driver so the project runs out of the box
-!WebContent/WEB-INF/lib/mysql-connector-j-*.jar
+!src/main/webapp/WEB-INF/lib/mysql-connector-j-*.jar
 
 # Virtual machine crash logs
 hs_err_pid*

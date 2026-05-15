@@ -26,14 +26,14 @@ the Model-View-Controller pattern and stores its data in MySQL.
 
 ```
 Skillforge/
-  src/com/skillforge/
+  src/main/java/com/skillforge/
     config/        Database connection helper
     controllers/   Servlets that handle every request
     filters/       AccessFilter that enforces login and role
     model/         Plain Java classes that represent table rows
     service/       Business logic and JDBC code
     util/          Validation and AES encryption helpers
-  WebContent/
+  src/main/webapp/
     css/           External stylesheets
     images/        Logo and illustrations
     WEB-INF/
