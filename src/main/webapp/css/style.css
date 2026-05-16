@@ -1,12 +1,13 @@
 /* Reset and base styles */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Progress bar fill; width is applied from data-progress via footer.jsp script */
+.js-progress-fill { width: 0%; }
+
 /* Custom scrollbar — moved from header.jsp to external CSS */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
     --primary: #0d9488;

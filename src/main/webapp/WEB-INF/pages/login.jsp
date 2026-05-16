@@ -55,14 +55,13 @@
              data-client_id="740455423110-bi3kos6v3msmmcs1u09lrudu2g0r0dnt.apps.googleusercontent.com"
              data-callback="handleGoogleCredential"
              data-auto_prompt="false"></div>
-        <div class="g_id_signin"
+        <div class="g_id_signin g-signin-center"
              data-type="standard"
              data-size="large"
              data-theme="outline"
              data-text="signin_with"
              data-shape="rectangular"
-             data-logo_alignment="left"
-             style="display: flex; justify-content: center;"></div>
+             data-logo_alignment="left"></div>
 
         <div class="auth-divider">
             <span>New to SkillForge?</span>
@@ -74,7 +73,7 @@
     </div>
 </div>
 
-<form id="googleAuthForm" action="<%= ctx %>/auth/google" method="post" style="display:none;">
+<form id="googleAuthForm" action="<%= ctx %>/auth/google" method="post" class="hidden-form">
     <input type="hidden" name="credential" id="googleCredential" />
 </form>
 <script>

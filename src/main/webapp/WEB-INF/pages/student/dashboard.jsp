@@ -92,7 +92,7 @@
                             <td class="px-5 sm:px-8 lg:px-10 py-5 lg:py-8 w-48 lg:w-64">
                                 <div class="flex items-center gap-3 lg:gap-4">
                                     <div class="flex-1 h-3 bg-slate-100 rounded-full overflow-hidden p-[2px]">
-                                        <div class="h-full rounded-full transition-all duration-1000 ease-out <%= en.getProgress() >= 100 ? "bg-amber-400" : "bg-brand" %> shadow-sm" style="width:<%= en.getProgress() %>%"></div>
+                                        <div class="js-progress-fill h-full rounded-full transition-all duration-1000 ease-out <%= en.getProgress() >= 100 ? "bg-amber-400" : "bg-brand" %> shadow-sm" data-progress="<%= en.getProgress() %>"></div>
                                     </div>
                                     <span class="text-xs font-black text-slate-500 tabular-nums"><%= en.getProgress() %>%</span>
                                 </div>

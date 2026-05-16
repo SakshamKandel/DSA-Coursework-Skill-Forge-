@@ -51,7 +51,7 @@
                         <td class="px-5 sm:px-8 py-5 lg:py-8">
                             <div class="flex flex-col items-center gap-2">
                                 <div class="w-24 sm:w-32 h-2 rounded-full bg-slate-100 overflow-hidden ring-4 ring-slate-50">
-                                    <div class="h-full rounded-full transition-all duration-700 <%= en.getProgress() >= 100 ? "bg-amber-400" : "bg-brand" %>" style="width:<%= en.getProgress() %>%"></div>
+                                    <div class="js-progress-fill h-full rounded-full transition-all duration-700 <%= en.getProgress() >= 100 ? "bg-amber-400" : "bg-brand" %>" data-progress="<%= en.getProgress() %>"></div>
                                 </div>
                                 <span class="text-[0.65rem] font-black text-slate-400 tabular-nums"><%= en.getProgress() %>% complete</span>
                             </div>
