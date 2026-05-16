@@ -9,9 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Certificate of Completion - SkillForge</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<%= ctx %>/css/style.css?v=2.3" />
+    <script src="<%= ctx %>/js/tailwind.js"></script>
+    <link rel="stylesheet" href="<%= ctx %>/css/style.css?v=2.4" />
 </head>
 <body class="cert-print p-3 sm:p-8 lg:p-20 flex flex-col items-center">
 

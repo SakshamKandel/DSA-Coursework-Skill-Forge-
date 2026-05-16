@@ -15,8 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="SkillForge - Online Course Enrollment and Progress Tracking System" />
     <title><%= pageTitle %> - SkillForge</title>
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS - self-hosted local copy for offline use and fast load -->
+    <script src="<%= ctx %>/js/tailwind.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -32,10 +32,8 @@
             }
         }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="<%= ctx %>/css/style.css?v=2.3" />
+    <!-- System font stack used in style.css; no external Google Fonts dependency -->
+    <link rel="stylesheet" href="<%= ctx %>/css/style.css?v=2.4" />
 
 </head>
 <body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-brand/20 selection:text-brand-dark overflow-x-hidden">
